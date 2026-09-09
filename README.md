@@ -1,28 +1,25 @@
-# Práctica Calificada 1 - Contenedores y Microservicios
+# Práctica Calificada 1: Dockerización de Aplicaciones Web y Web Scraping
 
-**Curso:** Desarrollo de Soluciones en la Nube  
-**Profesor:** Jaime Farfán  
-
----
-
-## 📌 Descripción del Proyecto
-Este repositorio contiene la solución a la Práctica Calificada 1, correspondiente al desarrollo y optimización de contenedores Docker para dos casos de estudio:
-
-1. **Caso 1:** Aplicación web de descarga de videos de redes sociales.
-2. **Caso 2:** Automatización de consulta electoral ONPE (Miembros de mesa) con exportación a Excel.
+Este repositorio contiene la solución completa de la Práctica Calificada 1, demostrando el uso de **Docker**, optimización de imágenes mediante construcciones multi-stage, desarrollo en Python y documentación de evidencias.
 
 ---
 
-## 📁 Estructura del Repositorio
-- `caso1-video-downloader/`: Código y Dockerfiles del Caso 1.
-- `caso2-consulta-onpe/`: Código, scripts de scraping y Dockerfiles del Caso 2.
+## Caso 1: Descargador de Videos Multi-Plataforma (Flask + yt-dlp)
+
+Aplicación web desarrollada en Python con Flask que permite la descarga de videos desde redes sociales (YouTube, TikTok, Instagram, Facebook, LinkedIn) utilizando la librería `yt-dlp`.
+
+### Estrategia de Dockerización y Optimización
+
+Se desarrollaron tres variantes de `Dockerfile` para comparar la reducción de peso y eficiencia de las imágenes:
+
+1. **`Dockerfile` (Estándar):** Basado en `python:3.10-slim`.
+2. **`Dockerfile.optimizado` (Alpine):** Basado en `python:3.10-alpine`.
+3. **`Dockerfile.multistage` (Multi-stage Build):** Separa la etapa de compilación de dependencias de la etapa final de ejecución sobre Alpine Linux.
 
 ---
 
-## 🚀 Repositorio GitHub
-- **URL:** `https://github.com/naomisanchez-coder/practica-calificada-1-contenedores` *(Reemplazar)*
+### Instrucciones de Construcción y Ejecución
 
----
-
-## ✍️ Conclusiones
-*(Se completará al finalizar las pruebas)*
+#### 1. Navegar a la carpeta del Caso 1
+```bash
+cd caso1-video-downloader
