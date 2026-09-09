@@ -1,0 +1,15 @@
+# Etapa 1: Compilación de dependencias
+FROM python:3.10-alpine AS builder
+RUN apk add --no-cache gcc musl-dev g++ libffi-dev openblas-dev
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# Etapa 2: Imagen final liviana
+FROM python:3.10-alpine
+RUN apk add --no-cache libstdc++ openblas
+WORKDIR /app
+COPY --from=builder /install /usr/local
+COPY . .
+EXPOSE 5001
+CMD ["python", "app.py"]
